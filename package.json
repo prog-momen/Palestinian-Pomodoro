@@ -1,7 +1,7 @@
 {
   "name": "palestinian-pomodoro",
   "version": "1.0.0",
-  "description": "A multi-timer Pomodoro application with Palestinian theme",
+  "description": "A Pomodoro application with Palestinian theme",
   "main": "src/index.js",
   "scripts": {
     "start": "webpack serve --mode development --open",
