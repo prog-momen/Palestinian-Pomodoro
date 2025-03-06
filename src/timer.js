@@ -103,6 +103,8 @@ export class Timer {
     tick() {
         if (this.remaining <= 0) {
             this.playAlarm();
+            const stopBtn = this.element.querySelector('.btn-stop');
+            stopBtn.style.animation = 'pulse 1s infinite';
             if (this.isBreak) {
                 this.isBreak = false;
                 this.sessionsCount++;
@@ -125,6 +127,9 @@ export class Timer {
         this.remaining--;
         this.updateDisplay();
         this.updateProgress();
+        // Remove animation when timer is running
+        const stopBtn = this.element.querySelector('.btn-stop');
+        stopBtn.style.animation = '';
     }
 
     updateDisplay() {
@@ -147,11 +152,13 @@ export class Timer {
             if (customSound) {
                 const audio = new Audio(customSound);
                 audio.play();
+                setTimeout(() => audio.pause(), 10000); //stop after 10 seconds
             }
         } else {
             import(`./sounds/${selectedSound}.mp3`).then(audioModule => {
                 const audio = new Audio(audioModule.default);
                 audio.play();
+                setTimeout(() => audio.pause(), 10000);
             }).catch(error => {
                 console.error('Failed to load sound:', error);
             });
