@@ -48,7 +48,7 @@
 اذا كنت تستخدم Visual Stuido
  ```bash
     code.
-    ```
+```
 
 4. انتقل الى مجلد dist وافتح 'index.html' على live server.
 
