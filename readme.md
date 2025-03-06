@@ -46,9 +46,9 @@
 
 3. افتح الملف باستخدام أي IDE :
 اذا كنت تستخدم Visual Stuido
- ```bash
-    code.
-```
+    ```bash
+    code .
+    ```
 
 4. انتقل الى مجلد dist وافتح 'index.html' على live server.
 
