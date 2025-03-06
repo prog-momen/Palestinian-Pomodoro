@@ -1,0 +1,224 @@
+:root {
+    --color-red: #E4312b;
+    --color-green: #149954;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-watermelon: #FF6B6B;
+    --color-olive: #808000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Kufi Arabic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: var(--color-black);
+    direction: rtl;
+    background-image: linear-gradient(45deg, rgba(20, 153, 84, 0.1) 25%, transparent 25%),
+                      linear-gradient(-45deg, rgba(228, 49, 43, 0.1) 25%, transparent 25%);
+    background-size: 60px 60px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--color-red);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+    color: var(--color-green);
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+.timers-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.timer-card {
+    background: var(--color-white);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    border: 2px solid var(--color-green);
+    transition: transform 0.3s ease;
+}
+
+.timer-card:hover {
+    transform: translateY(-5px);
+}
+
+.timer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.timer-name {
+    font-size: 1.2rem;
+    border: none;
+    border-bottom: 2px solid var(--color-green);
+    padding: 0.5rem;
+    width: 150px;
+}
+
+.timer-controls button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.btn-start {
+    color: var(--color-green);
+}
+
+.btn-pause {
+    color: var(--color-red);
+}
+
+.btn-stop {
+    color: var(--color-red);
+}
+
+.btn-reset {
+    color: var(--color-black);
+}
+
+.timer-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.time-display {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--color-black);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-green);
+    transition: width 1s linear;
+}
+
+.timer-settings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.time-input {
+    width: 60px;
+    padding: 0.5rem;
+    border: 1px solid var(--color-green);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.add-timer-btn {
+    background-color: var(--color-green);
+    color: var(--color-white);
+    border: none;
+    border-radius: 15px;
+    padding: 2rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s;
+    height: 100%;
+}
+
+.add-timer-btn:hover {
+    transform: translateY(-5px);
+}
+
+.add-timer-btn i {
+    font-size: 2rem;
+}
+
+.sound-settings {
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--color-red);
+}
+
+.sound-settings h2 {
+    color: var(--color-red);
+    margin-bottom: 1.5rem;
+}
+
+.sound-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sound-select {
+    padding: 0.5rem;
+    border: 1px solid var(--color-red);
+    border-radius: 5px;
+    min-width: 150px;
+}
+
+.btn-test-sound,
+.btn-upload-sound {
+    background-color: var(--color-red);
+    color: var(--color-white);
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.btn-test-sound:hover,
+.btn-upload-sound:hover {
+    background-color: #c62828;
+}
+
+.sound-upload {
+    display: none;
+}
