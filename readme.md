@@ -2,7 +2,7 @@
 
 تطبيق ويب يهدف إلى تحسين الإنتاجية وتنظيم الوقت باستخدام تقنية بومودورو الشهيرة، لكن مع لمسة فلسطينية تُضفي عليه طابعًا مميزًا. حيث يمزج بين الفعالية والمساهمة في تعزيز الثقافة الفلسطينية من خلال التصميم والمحتوى.
 # Demo Video 
-<a href="https://www.loom.com/share/03829331bcb14272a3694030eb1c0c69?sid=b40f5835-2376-42cf-9c4f-63728e863431" target="_blank" rel="noopener noreferrer">Go To Demo</a>
+<a target="_blank" rel="noopener noreferrer" href="https://www.loom.com/share/bfbc5a9eaa7149a9ba73a3ebfbf2f7ef?sid=83feb982-37b7-444f-86d2-7ad7f835de80">Go To Demo</a>
 
 
 
