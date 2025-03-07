@@ -8,12 +8,14 @@ export class Timer {
         this.nameInput = this.element.querySelector('.timer-name');
         this.isBreak = false;
         this.interval = null;
-        this.workTime = 25;
+        this.workTime = 35;
         this.breakTime = 5;
         this.longBreakTime = 15;
         this.sessionsCount = 0;
         this.duration = this.workTime * 60;
         this.remaining = this.duration;
+        this.sessionStartTime = null;
+        this.wasInterrupted = false;
         
         this.setupEventListeners();
         this.updateDisplay();
@@ -68,6 +70,10 @@ export class Timer {
         if (this.interval) {
             clearInterval(this.interval);
         }
+        if (!this.isBreak) {
+            this.sessionStartTime = new Date();
+            this.wasInterrupted = false;
+        }
         this.interval = setInterval(() => this.tick(), 1000);
     }
 
@@ -81,6 +87,7 @@ export class Timer {
     stop() {
         this.pause();
         this.reset();
+        this.wasInterrupted = true;
         // Stop any playing sounds
         const audios = document.getElementsByTagName('audio');
         for (let audio of audios) {
@@ -105,7 +112,8 @@ export class Timer {
             this.playAlarm();
             const stopBtn = this.element.querySelector('.btn-stop');
             stopBtn.style.animation = 'pulse 1s infinite';
-            if (this.isBreak) {
+            if (this.isBreak && !this.wasInterrupted) {
+                this.saveCompletedSession();
                 this.isBreak = false;
                 this.sessionsCount++;
             } else {
@@ -163,5 +171,27 @@ export class Timer {
                 console.error('Failed to load sound:', error);
             });
         }
+    }
+
+    saveCompletedSession() {
+        if (!this.sessionStartTime || this.wasInterrupted) return;
+
+        const sessionEnd = new Date();
+        const session = {
+            startTime: this.sessionStartTime.toISOString(),
+            endTime: sessionEnd.toISOString(),
+            workDuration: this.isBreak ? null : this.workTime,
+            breakDuration: this.isBreak ? this.breakTime : null
+        };
+
+        let completedSessions = JSON.parse(localStorage.getItem('completedSessions') || '[]');
+        completedSessions.unshift(session);
+        localStorage.setItem('completedSessions', JSON.stringify(completedSessions));
+
+        // Dispatch an event to notify UI about the new session
+        const event = new CustomEvent('sessionCompleted', { detail: session });
+        document.dispatchEvent(event);
+
+        this.sessionStartTime = null;
     }
 }
